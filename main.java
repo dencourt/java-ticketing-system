@@ -5,7 +5,9 @@ public class main{
         Scanner scanner = new Scanner(System.in);
 
         //Login Menu
-        System.out.println("Welcome to the ticketing system.");
+        System.out.println("========================================");
+        System.out.println("    Welcome to the ticketing system.    ");
+        System.out.println("========================================");
         System.out.println();
         System.out.println("Please choose your account type:");
         System.out.println("1. User");
@@ -25,13 +27,36 @@ public class main{
         }
 
         if (loginChoice == 1) {
-            System.out.println("Call user menu method");
+            userLogin();
         } else if (loginChoice == 2) {
             System.out.println("Call admin menu method");
         } else {
             System.out.println("Thank you for using the ticketing service.");
             System.out.println("We hope you enjoyed using our services.");
         }
+    }
+
+    //User login
+    public static void userLogin(){
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Please select your account");
+
+        String[] userAccounts = {"Abigail", "Briony", "Charlotte"};
+        int counter;
+
+        for (counter = 0; counter < userAccounts.length; counter++){
+            System.out.println((counter+1)+". "+userAccounts[counter]);
+        }
+        System.out.println((counter+1)+". Exit");
+        System.out.println();
+
+        System.out.println("Enter choice: ");
+        int userAccountID = scanner.nextInt();
+        System.out.println();
+
+        String currentUser = userAccounts[userAccountID-1];
+
+        System.out.println("Successful login.");
     }
 
 }
