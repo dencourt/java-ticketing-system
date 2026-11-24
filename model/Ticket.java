@@ -1,3 +1,4 @@
+package model;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 
@@ -10,8 +11,8 @@ public class Ticket {
     public LocalDateTime dateCreated;
     public String createdBy;
     public String status;
-    public ArrayList<String> updateHistory;    
-    public static int ticketCounter = 0;
+    public ArrayList<TicketHistory> ticketHistory;    
+    public static int ticketCounter = 1;
 
     public Ticket(String title, String category, String priority, String description, LocalDateTime dateCreated, String createdBy, String status) {
         this.id = ticketCounter;
@@ -22,7 +23,7 @@ public class Ticket {
         this.dateCreated = dateCreated;
         this.createdBy = createdBy;
         this.status = status;
-        this.updateHistory = new ArrayList<>();
+        this.ticketHistory = new ArrayList<>();
         ticketCounter++;
     }
 }
