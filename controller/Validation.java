@@ -59,6 +59,28 @@ public class Validation {
         return input;
     }
 
+    public static boolean checkPassword(String password) {
+        String input;
+        int passwordAttempts = 5;
+        
+        do {
+            System.out.print("Enter password: ");
+            input = scanner.nextLine();
+            System.out.println();
+
+            if (!input.equals(password)) {
+                passwordAttempts--;
+                System.out.println("Incorrect password. Please try again.");
+                System.out.println("You have " + passwordAttempts + " attempts remaining.");
+                System.out.println();
+            } else {
+                return true;
+            }
+        } while (!(input.equals(password)) && passwordAttempts > 0);
+        return false;
+    }
+
+
     // Checks if username already exits in programme
     public static boolean checkUsername(String username, ArrayList<String> accounts) {
         username = username.toLowerCase();

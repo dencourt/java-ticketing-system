@@ -1,10 +1,12 @@
 package controller;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import model.Ticket;
 import model.TicketHistory;
 
 public class TicketManager {
     public static int ticketCounter = 1;
+    public static ArrayList<Ticket> tickets = new ArrayList<>();
 
     public static void createNewTicket(String user) {
         String[] categories = {"Hardware", "Software", "Network", "Account"};
@@ -47,6 +49,7 @@ public class TicketManager {
             LocalDateTime date = LocalDateTime.now();
             String status = "Open";
             Ticket newTicket = new Ticket(id, title, category, priority, description, date, user, status);
+            tickets.add(newTicket);
             addHistoryUpdate(newTicket, status, date, "Ticket created.");
             ticketCounter++;
 
@@ -81,6 +84,12 @@ public class TicketManager {
         for (int i = 0; i < ticket.ticketHistory.size(); i++) {
             System.out.println(ticket.ticketHistory.get(i).toString());
         }
+    }
+
+    public static void viewTicketSummary() {
+        System.out.println("Ticket Summary:");
+        System.out.println();
+        System.out.println("There are currently no open tickets");
     }
     
 }
