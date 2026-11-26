@@ -14,6 +14,7 @@ public class Validation {
         do {
             System.out.print("Enter choice: ");
             input = scanner.nextInt();
+            scanner.nextLine();
             System.out.println();
 
             if (input < lowestValue || input > highestValue) {
@@ -21,6 +22,39 @@ public class Validation {
             }
             
         } while (input < lowestValue || input > highestValue);
+
+        return input;
+    }
+
+    public static String validateString(String prompt) {
+        String input;
+
+        do {
+            System.out.print(prompt +": ");
+            input = scanner.nextLine();
+            System.out.println();
+
+            if (input.length() < 1) {
+                System.out.println(prompt + " cannot be empty. Please enter a valid " + prompt.toLowerCase() + ".");
+            }
+        } while (input.length() < 1);
+
+        return input;
+    }
+
+    public static String validateYesNo() {
+        String input;
+
+        do {
+            System.out.print("Enter choice: ");
+            input = scanner.nextLine();
+            System.out.println();
+            input = input.toLowerCase();
+
+            if (!input.equals("y") && !input.equals("n")) {
+                System.out.println("Invalid input. Please enter Y or N.");
+            }
+        } while (!input.equals("y") && !input.equals("n"));
 
         return input;
     }
